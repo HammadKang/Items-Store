@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "hamiman",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/tmp/amplify-0f276bb4-0931-4f36-845a-b4f4428b03b3/amplify/backend/api/hamiman/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "keyDescription": "api key description",
+      "expirationTime": 30
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "AWS_IAM"
+      }
+    ]
+  }
+}

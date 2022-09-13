@@ -1,0 +1,393 @@
+{
+  "Resources": {
+    "CartProductproductauth0FunctionCartProductproductauth0FunctionAppSyncFunctionC92BB690": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "CartProductproductauth0Function",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/CartProduct.product.auth.1.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson({})"
+      }
+    },
+    "CartProductProductDataResolverFnCartProductProductDataResolverFnAppSyncFunction071C7CEF": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackProductNestedStackProductNestedStackResource22231207OutputstransformerrootstackProductProductDataSource1020FD41Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "CartProductProductDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/CartProduct.product.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/CartProduct.product.res.vtl"
+            ]
+          ]
+        },
+        "SyncConfig": {
+          "ConflictDetection": "VERSION",
+          "ConflictHandler": "AUTOMERGE"
+        }
+      }
+    },
+    "CartProductproductResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "product",
+        "TypeName": "CartProduct",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "CartProductproductauth0FunctionCartProductproductauth0FunctionAppSyncFunctionC92BB690",
+                "FunctionId"
+              ]
+            },
+            {
+              "Fn::GetAtt": [
+                "CartProductProductDataResolverFnCartProductProductDataResolverFnAppSyncFunction071C7CEF",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"CartProduct\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"product\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackProductNestedStackProductNestedStackResource22231207OutputstransformerrootstackProductProductTable42E29C53Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)"
+      }
+    },
+    "OrderProductProductDataResolverFnOrderProductProductDataResolverFnAppSyncFunction89F06828": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackProductNestedStackProductNestedStackResource22231207OutputstransformerrootstackProductProductDataSource1020FD41Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "OrderProductProductDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/OrderProduct.product.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/OrderProduct.product.res.vtl"
+            ]
+          ]
+        },
+        "SyncConfig": {
+          "ConflictDetection": "VERSION",
+          "ConflictHandler": "AUTOMERGE"
+        }
+      }
+    },
+    "OrderProductproductResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "product",
+        "TypeName": "OrderProduct",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "CartProductproductauth0FunctionCartProductproductauth0FunctionAppSyncFunctionC92BB690",
+                "FunctionId"
+              ]
+            },
+            {
+              "Fn::GetAtt": [
+                "OrderProductProductDataResolverFnOrderProductProductDataResolverFnAppSyncFunction89F06828",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"OrderProduct\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"product\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackProductNestedStackProductNestedStackResource22231207OutputstransformerrootstackProductProductTable42E29C53Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)"
+      }
+    },
+    "OrderProductOrderDataResolverFnOrderProductOrderDataResolverFnAppSyncFunctionCD097A19": {
+      "Type": "AWS::AppSync::FunctionConfiguration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "DataSourceName": {
+          "Ref": "referencetotransformerrootstackOrderNestedStackOrderNestedStackResourceEB5E0067OutputstransformerrootstackOrderOrderDataSource25A54381Name"
+        },
+        "FunctionVersion": "2018-05-29",
+        "Name": "OrderProductOrderDataResolverFn",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/OrderProduct.order.req.vtl"
+            ]
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Join": [
+            "",
+            [
+              "s3://",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentBucket7592718ARef"
+              },
+              "/",
+              {
+                "Ref": "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref"
+              },
+              "/resolvers/OrderProduct.order.res.vtl"
+            ]
+          ]
+        },
+        "SyncConfig": {
+          "ConflictDetection": "VERSION",
+          "ConflictHandler": "AUTOMERGE"
+        }
+      }
+    },
+    "OrderProductorderResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+        },
+        "FieldName": "order",
+        "TypeName": "OrderProduct",
+        "Kind": "PIPELINE",
+        "PipelineConfig": {
+          "Functions": [
+            {
+              "Fn::GetAtt": [
+                "CartProductproductauth0FunctionCartProductproductauth0FunctionAppSyncFunctionC92BB690",
+                "FunctionId"
+              ]
+            },
+            {
+              "Fn::GetAtt": [
+                "OrderProductOrderDataResolverFnOrderProductOrderDataResolverFnAppSyncFunctionCD097A19",
+                "FunctionId"
+              ]
+            }
+          ]
+        },
+        "RequestMappingTemplate": {
+          "Fn::Join": [
+            "",
+            [
+              "$util.qr($ctx.stash.put(\"typeName\", \"OrderProduct\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"order\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+              {
+                "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+              {
+                "Ref": "referencetotransformerrootstackOrderNestedStackOrderNestedStackResourceEB5E0067OutputstransformerrootstackOrderOrderTableB4665187Ref"
+              },
+              "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackauthRoleNameFB872D50Ref"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:aws:sts::",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":assumed-role/",
+              {
+                "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
+              },
+              "/CognitoIdentityCredentials\"))\n$util.toJson({})"
+            ]
+          ]
+        },
+        "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)"
+      }
+    }
+  },
+  "Parameters": {
+    "referencetotransformerrootstackGraphQLAPI20497F53ApiId": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackGraphQLAPINONEDS2BA9D1C8Name": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackS3DeploymentBucket7592718ARef": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackS3DeploymentRootKeyA71EA735Ref": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackProductNestedStackProductNestedStackResource22231207OutputstransformerrootstackProductProductDataSource1020FD41Name": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackProductNestedStackProductNestedStackResource22231207OutputstransformerrootstackProductProductTable42E29C53Ref": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackauthRoleNameFB872D50Ref": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackunauthRoleName49F3C1FERef": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackOrderNestedStackOrderNestedStackResourceEB5E0067OutputstransformerrootstackOrderOrderDataSource25A54381Name": {
+      "Type": "String"
+    },
+    "referencetotransformerrootstackOrderNestedStackOrderNestedStackResourceEB5E0067OutputstransformerrootstackOrderOrderTableB4665187Ref": {
+      "Type": "String"
+    }
+  }
+}

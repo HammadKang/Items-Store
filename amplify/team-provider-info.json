@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hamiman-dev-42741-authRole",
+      "UnauthRoleArn": "arn:aws:iam::762045214284:role/amplify-hamiman-dev-42741-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::762045214284:role/amplify-hamiman-dev-42741-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-hamiman-dev-42741-deployment",
+      "UnauthRoleName": "amplify-hamiman-dev-42741-unauthRole",
+      "StackName": "amplify-hamiman-dev-42741",
+      "StackId": "arn:aws:cloudformation:us-east-1:762045214284:stack/amplify-hamiman-dev-42741/8c19b940-11f1-11ed-a744-1258446b72c3",
+      "AmplifyAppId": "d2bifd4j8wowii"
+    },
+    "categories": {
+      "auth": {
+        "hamiman367a4356": {}
+      }
+    }
+  }
+}

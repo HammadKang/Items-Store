@@ -1,0 +1,87 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hamiman-dev-42741-authRole",
+      "UnauthRoleArn": "arn:aws:iam::762045214284:role/amplify-hamiman-dev-42741-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::762045214284:role/amplify-hamiman-dev-42741-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-hamiman-dev-42741-deployment",
+      "UnauthRoleName": "amplify-hamiman-dev-42741-unauthRole",
+      "StackName": "amplify-hamiman-dev-42741",
+      "StackId": "arn:aws:cloudformation:us-east-1:762045214284:stack/amplify-hamiman-dev-42741/8c19b940-11f1-11ed-a744-1258446b72c3",
+      "AmplifyAppId": "d2bifd4j8wowii"
+    }
+  },
+  "auth": {
+    "hamiman367a4356": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "output": {
+        "UserPoolId": "us-east-1_vQ6frsBBm",
+        "AppClientIDWeb": "7gci4vgketcvphrbt48t1fju0v",
+        "AppClientID": "7n3vqo0ef2fj407k3utle1atc2",
+        "IdentityPoolId": "us-east-1:fedce9aa-9c45-4a39-8e46-c4a5c815dbba",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:762045214284:userpool/us-east-1_vQ6frsBBm",
+        "IdentityPoolName": "hamiman367a4356_identitypool_367a4356__dev",
+        "UserPoolName": "hamiman367a4356_userpool_367a4356"
+      },
+      "lastPushTimeStamp": "2022-08-02T14:49:16.655Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-hamiman-dev-42741-deployment/amplify-cfn-templates/auth/hamiman367a4356-cloudformation-template.json",
+        "logicalId": "authhamiman367a4356"
+      }
+    }
+  },
+  "api": {
+    "hamiman": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
+        },
+        "GraphQLAPIIdOutput": "22mvoa37lzhipctorkiblth2r4",
+        "GraphQLAPIEndpointOutput": "https://xlx53ppky5cg5dj4ktsopyouuu.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-ldp5kaickrh2fhml56p2veg7ey"
+      },
+      "lastPushTimeStamp": "2022-08-02T15:09:31.366Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-hamiman-dev-42741-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apihamiman"
+      },
+      "lastPushDirHash": "mUKoEQFpYJvvjRWIHrJ3G1vOUUQ="
+    }
+  }
+}

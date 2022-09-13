@@ -1,0 +1,4 @@
+#Wed Aug 24 00:26:11 PKT 2022
+base.0=E\:\\HAMIMAN\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
