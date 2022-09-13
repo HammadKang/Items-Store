@@ -8,11 +8,14 @@ HAMIMAN-Store:
 
 
 yarn start -> (Starting server)
+
 yarn android -> (Starting emulator on Android)
 
 
 For IOS:
+
 yarn pod-install
+
 yarn ios -> (Starting emulator on IOS)
 
 
